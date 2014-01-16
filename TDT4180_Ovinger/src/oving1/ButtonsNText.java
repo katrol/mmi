@@ -94,8 +94,9 @@ public class ButtonsNText extends JPanel {
 
 // Teori
 
-// itemlistener og keylistener?
+// leksikalsk: keylistener, lytter direkte til om taster på tastaturet blir trykket på
+// syntaktisk: itemlistener lytter til om det skjer noe med knappene
 
 // lexikalske blir veldig smått og detaljert, mindre styr med syntaktiske hendelser.
 
-// tror ikke det finnes noe syntaktisk jeg kunne ha erstattet keylistener-greiene med, måtte bruke released for at den nyeste bokstaven skulle få riktig case også
+// i stedet for keylistener kunne jeg sikkert ha brukt changelistener til å merke når det blir skrevet i textline
