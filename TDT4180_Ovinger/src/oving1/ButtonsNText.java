@@ -6,12 +6,24 @@ import java.awt.event.*;
 
 public class ButtonsNText extends JPanel {
 	JTextField TextLine = new JTextField(25);
-	JToggleButton UpperCaseButton = new JToggleButton("Upper case");
-	JToggleButton LowerCaseButton = new JToggleButton("Lower case");
-	ButtonGroup group = new ButtonGroup();
-	JCheckBox ContinousButton = new JCheckBox("Continous?");
+	JToggleButton UpperCaseButton;
+	JToggleButton LowerCaseButton;
+	ButtonGroup group;
+	JCheckBox ContinousButton;
+	
 	public ButtonsNText() {
 		super();
+		TextLine = new JTextField(25);
+		TextLine.setName("TextLine");
+		
+		UpperCaseButton = new JToggleButton("Upper case");
+		UpperCaseButton.setName("UpperCaseButton");
+		LowerCaseButton = new JToggleButton("Lower case");
+		LowerCaseButton.setName("LowerCaseButton");
+		
+		group = new ButtonGroup();
+		ContinousButton = new JCheckBox("Continous?");
+		ContinousButton.setName("ContinuousButton");
 		setPreferredSize(new Dimension(700, 50));
 		add(TextLine);
 		group.add(UpperCaseButton);
@@ -26,6 +38,17 @@ public class ButtonsNText extends JPanel {
 				}
 				else {
 					lower(TextLine.getText());
+				}
+			}
+		});
+		
+		LowerCaseButton.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent ie) {
+				if (LowerCaseButton.isSelected()) {
+					lower(TextLine.getText());
+				}
+				else {
+					upper(TextLine.getText());
 				}
 			}
 		});
@@ -55,6 +78,7 @@ public class ButtonsNText extends JPanel {
 			{
 				if (ContinousButton.isSelected())
 				{
+					int caret = TextLine.getCaretPosition();
 					if (UpperCaseButton.isSelected())
 					{
 						upper(TextLine.getText());
@@ -63,6 +87,7 @@ public class ButtonsNText extends JPanel {
 					{
 						lower(TextLine.getText());
 					}
+					TextLine.setCaretPosition(caret);
 				}
 			}
 		});
