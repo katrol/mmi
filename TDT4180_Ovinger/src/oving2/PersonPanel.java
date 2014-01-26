@@ -1,8 +1,10 @@
 package oving2;
 
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.event.*;
 
 public class PersonPanel extends JPanel {
 	
@@ -82,6 +84,37 @@ public class PersonPanel extends JPanel {
 		c.gridy = 4;
 		c.weighty = 0.1;
 		add(HeightPropertyComponent, c);
+		
+		NamePropertyComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (model != null) model.setName(NamePropertyComponent.getText());
+			}
+		});
+		
+		EmailPropertyComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (model != null) model.setEmail(EmailPropertyComponent.getText());
+			}
+		});
+		
+		DateOfBirthPropertyComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (model != null) model.setDateOfBirth(DateOfBirthPropertyComponent.getText());
+			}
+		});
+		
+		GenderPropertyComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Gender gender = (Gender) GenderPropertyComponent.getSelectedItem();
+				if (model != null) model.setGender(gender);
+			}
+		});
+		
+		HeightPropertyComponent.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				if (model != null) model.setHeight(HeightPropertyComponent.getValue());
+			}
+		});
 		
 	}
 

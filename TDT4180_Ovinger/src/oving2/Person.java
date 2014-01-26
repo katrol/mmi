@@ -7,7 +7,10 @@ public class Person {
 	private Gender gender;
 	private String email;
 	private int height;
-
+	
+	public Person(String name) {
+		this.name = name;
+	}
 	
 	public String getName() {
 		return name;
